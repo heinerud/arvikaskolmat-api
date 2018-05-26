@@ -39,8 +39,8 @@ function getMenu(options) {
 }
 
 var appRouter = function (app) {
-    app.get("/school", (req, res) => getMenu(school).then(menu => res.send(menu)))
-    app.get("/preschool", (req, res) => getMenu(preschool).then(menu => res.send(menu)))
+    app.get("/school", (req, res, next) => getMenu(school).then(menu => res.send(menu)))
+    app.get("/preschool", (req, res, next) => getMenu(preschool).then(menu => res.send(menu)))
 }
 
 module.exports = appRouter;
