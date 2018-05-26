@@ -14,6 +14,7 @@ const school = {
 function getMenu(options) {
     return rp(options)
         .then(($) => {
+            header = $('.nav-header--label').text().trim()
             dates = $.html()
                 .split('\n')
                 .filter(x => x.includes('js-date'))
@@ -34,7 +35,7 @@ function getMenu(options) {
             menu = dates.map((date, i) => {
                 return { 'date': date, 'dish': food[i] }
             })
-            return menu
+            return { title: header, menu: menu }
         })
         .catch((err) => console.log(err))
 }
