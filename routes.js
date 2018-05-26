@@ -19,6 +19,8 @@ function getMenu(options) {
                 .filter(x => x.includes('js-date'))
                 .map(x => x.slice(x.indexOf('js-date') + 9, -2))
 
+            console.log($('#menu-week').text())
+
             food = $('.day-alternative').text()
                 .split('\n')
                 .map(x => x.trim())
@@ -29,11 +31,10 @@ function getMenu(options) {
                 return { error: 'Array length mismatch' }
             }
 
-            menu = dates.reduce((acc, x, i) => {
-                acc[x] = food[i]
-                return acc
-            }, {})
-            return JSON.stringify(menu)
+            menu = dates.map((date, i) => {
+                return { 'date': date, 'dish': food[i] }
+            })
+            return menu
         })
         .catch((err) => console.log(err))
 }
