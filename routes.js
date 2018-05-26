@@ -29,10 +29,11 @@ function getMenu(options) {
                 return { error: 'Array length mismatch' }
             }
 
-            return dates.reduce((acc, x, i) => {
+            menu = dates.reduce((acc, x, i) => {
                 acc[x] = food[i]
                 return acc
             }, {})
+            return JSON.stringify(menu)
         })
         .catch((err) => console.log(err))
 }
