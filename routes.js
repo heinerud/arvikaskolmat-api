@@ -11,7 +11,7 @@ function getMenu(options) {
                 .filter(x => x.includes('weekData'))
                 .map(x => x.slice(x.indexOf('{')))[0]
                 .trim()
-                .replace(/new Date\((\d+)\)/g, '"$1"')
+                .replace(/new Date\((\d+)\)/g, '$1')
             return JSON.parse(data)
         })
         .catch((err) => console.log(err))
