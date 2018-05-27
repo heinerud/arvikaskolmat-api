@@ -16,7 +16,6 @@ function getMenu(options) {
         })
         .catch((err) => console.log(err))
 }
-getMenu(school)
 
 var appRouter = function (app) {
     app.get("/school", (req, res, next) => getMenu(school).then(menu => res.send(menu)))
